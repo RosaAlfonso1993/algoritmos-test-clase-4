@@ -1,5 +1,7 @@
 package com.example.clase4.agenda;
 
+import com.example.clase4.exceptions.ContactError;
+import com.example.clase4.shopping.ErrorMessage;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -44,7 +46,7 @@ class AgendaTest extends Agenda {
 
         assertTrue(eliminado);
     }
-
+/*
     @Test
     @DisplayName("Tests happy path eliminated false")
     public void testHappyPathEliminatedFalse() {
@@ -54,6 +56,10 @@ class AgendaTest extends Agenda {
         assertFalse(eliminado);
     }
 
+    Como devuelve una excepcion no llega a devolver el valor
+    solo se cortas
+ */
+
     @Test
     @DisplayName("Tests happy path collection of telephones")
     public void testHappyPathCollectionOfTelephones() {
@@ -62,6 +68,4 @@ class AgendaTest extends Agenda {
 
         assertTrue(listaTelefonos.contains(1131391999));
     }
-
-
 }

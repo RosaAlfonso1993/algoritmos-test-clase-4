@@ -1,7 +1,9 @@
 package com.example.clase4.agenda;
 
-import java.util.HashMap;
-import java.util.List;
+import com.example.clase4.exceptions.ContactError;
+import com.example.clase4.shopping.ErrorMessage;
+
+import java.util.*;
 import java.util.stream.Collectors;
 
 
@@ -23,21 +25,28 @@ public class Agenda {
             new HashMap<>();
 
     public static void nuevoContacto(String nombre, int telefono) {
-        //TODO -> implement me
+        miAgenda.put(nombre,telefono);
     }
 
     public static void modificarTelefono(String nombre, int telefono) {
-        //TODO -> implement me
+         if (miAgenda.containsKey(nombre)) miAgenda.put(nombre,telefono);
     }
 
     public static Integer obtenerTelefono(String nombre) {
-        //TODO -> implement me
-        return null;
+        Integer tel =  miAgenda.get(nombre);
+        if(!Objects.nonNull(tel)){
+            throw new ContactError("El contacto no existe");
+        }
+        return tel;
     }
 
     public static boolean eliminarTelefono(String nombre) {
-        //TODO -> implement me
-        return false;
+        if(!miAgenda.containsKey(nombre)){
+            throw new ContactError("El contacto no existe");
+
+        }
+        miAgenda.remove(nombre);
+        return !miAgenda.containsKey(nombre);
     }
 
     protected static List<Integer> miAgenda() {
